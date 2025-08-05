@@ -112,5 +112,11 @@ python src/evaluate_wsi_level.py
 
 This will output patch-level and WSI-level IoU scores for each class.
 
+## Visulize and save output 
+```bash
+notebook/visulize.ipynb
+```
+
+
 ---
 
