@@ -9,21 +9,29 @@ This project performs tumor segmentation in prostate WSIs using supervised and s
 Install uv and create a reproducible Python environment:
 
 curl -LsSf https://astral.sh/uv/install.sh | sh
+
 uv --version
+
 uv init
+
 uv venv
+
 source .venv/bin/activate
+
 uv pip install -r requirements.lock.txt
+
 
 Download data
     Training
     Validation
 
 Extract patch:
+
 run src/dataset/create_pathches.py # add the path of dataset and path to store patches
 
 open the src/config.py 
-add extracted patch path of images and mask
+
+add extracted patch path of images and mask.
 change hyperparameters for model. 
 
 
