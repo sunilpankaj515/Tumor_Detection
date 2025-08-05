@@ -6,34 +6,43 @@ This project performs tumor segmentation in prostate WSIs using supervised and s
 
 ## ⚙️ Environment Setup
 
-Install uv and create a reproducible Python environment:
+Install [uv](https://github.com/astral-sh/uv) and create a reproducible Python environment:
 
+```bash
 curl -LsSf https://astral.sh/uv/install.sh | sh
-
 uv --version
-
 uv init
-
 uv venv
-
 source .venv/bin/activate
-
 uv pip install -r requirements.lock.txt
+```
 
+---
 
-Download data
-    Training
-    Validation
+## 📁 Dataset Preparation
 
-Extract patch:
+Download the dataset:
 
-run src/dataset/create_pathches.py # add the path of dataset and path to store patches
+- Training WSIs
+- Validation WSIs
 
-open the src/config.py 
+Extract patches from WSIs:
 
-add extracted patch path of images and mask.
-change hyperparameters for model. 
+```bash
+python src/dataset/create_pathches.py
+```
 
+> ⚠️ Edit the script to specify:
+> - Path to dataset
+> - Path to store extracted patches
+
+Update the config:
+
+- Open `src/config.py`
+- Set paths for extracted image and mask patches
+- Adjust model hyperparameters as needed
+
+---
 
 Training
 
