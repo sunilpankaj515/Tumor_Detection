@@ -44,28 +44,73 @@ Update the config:
 
 ---
 
-Training
+## 🧪 Supervised Training
 
-Supervised training 
-run src/train.py 
+Train the model using labeled data:
 
-run tensorboard to visulise loss and class wise iou for train and val set. 
+```bash
+python src/train.py
+```
+
+Visualize training with TensorBoard:
+
+```bash
 tensorboard --logdir=runs/finetune_20250805-184611 --port=6006
+```
 
+---
 
-Semi superwise fine tunning :
+## 🤖 Semi-Supervised Fine-Tuning
 
-use extra 30 wsi (does not have mask)
-run file inside src/dataset 
-1. src/dataset/extract_patches_unlabled.py # extract the relevent patches 
-2. src/dataset/hard_mining.py # get hard samples from patches
-3. src/generate_pseudo_lables.py # generate pseudo lables using best trained model
-4. src/train_with_pseudo.py  # train with real training + pseudo label dataset
+Use extra 30 WSIs (without masks) to enhance performance:
 
-run tensorboard
+### 1. Extract relevant patches:
 
-Evaluate the model 
-download trained model from shared gdrive link 
+```bash
+python src/dataset/extract_patches_unlabled.py
+```
 
-run src/evaluate_wsi_level.py # verify Validation_path and save_dir path in config.py file 
-this gives patch and wsi level each class iou. 
+### 2. Mine hard examples:
+
+```bash
+python src/dataset/hard_mining.py
+```
+
+### 3. Generate pseudo-labels using best supervised model:
+
+```bash
+python src/generate_pseudo_lables.py
+```
+
+### 4. Train with real + pseudo-labeled dataset:
+
+```bash
+python src/train_with_pseudo.py
+```
+
+Visualize training with TensorBoard:
+
+```bash
+tensorboard --logdir=runs --port=6006
+```
+
+---
+
+## 🧾 Evaluation
+
+Download the trained model from the provided Google Drive link.
+
+Evaluate on validation set:
+
+```bash
+python src/evaluate_wsi_level.py
+```
+
+> ✅ Make sure these are correctly set in `src/config.py`:
+> - `Validation_path`
+> - `save_dir`
+
+This will output patch-level and WSI-level IoU scores for each class.
+
+---
+
