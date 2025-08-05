@@ -1,0 +1,11 @@
+torch>=2.0.0
+torchvision
+segmentation_models_pytorch
+opencv-python
+numpy
+matplotlib
+tqdm
+scikit-learn
+tensorboard
+opencv-python
+albumentations
